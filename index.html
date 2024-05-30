@@ -36,7 +36,9 @@
         section {
             padding: 15px;
         }
-
+        #key-container{
+            padding-bottom: 40px;
+        }
         footer {
             position: fixed;
             bottom: 0;
@@ -98,6 +100,7 @@
                 button.className = "btn btn-secondary";
                 button.type = "button";
                 button.dataset.key = `key-${index}`;
+                button.dataset.country = element.country;
 
                 label.innerText = element.country;
                 input.value = element.key;
@@ -111,7 +114,7 @@
                 button.addEventListener("click", (event) => {
                     const keyId = event.currentTarget.dataset.key;
                     const inputElement = document.getElementById(keyId);
-                    copyToClipboard(inputElement);
+                    copyToClipboard(inputElement, event.currentTarget.dataset.country);
                 });
 
                 keyDiv.appendChild(divOuter);
@@ -119,11 +122,10 @@
             });
         }
         showKey();
-
-        function copyToClipboard(inputElement) {
+        function copyToClipboard(inputElement, country) {
             inputElement.select();
             document.execCommand('copy');
-            alert(`Key copied to clipboard: ${inputElement.value}`);
+            alert(`Successfully copied ${country}`);
         }
     </script>
 </body>
