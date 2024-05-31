@@ -60,6 +60,7 @@
     </header>
     <div class="container">
         <div id="datetime" class="mb-3"></div>
+        <div class="">Expire Date - <span class="">02/06/2024</span></div>
         <section id="key-container" class="row">
 
         </section>
@@ -70,6 +71,7 @@
         </span>
     </footer>
     <script src="./key.js"></script>
+    <script src="./sweetalert.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         function updateDateTime() {
@@ -125,7 +127,14 @@
         function copyToClipboard(inputElement, country) {
             inputElement.select();
             document.execCommand('copy');
-            alert(`Successfully copied ${country}`);
+            Swal.fire({
+                position: "top-end",
+                title: 'Success',
+                text: `Successfully copied ${country}`,
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 1500
+            })
         }
     </script>
 </body>
